@@ -1,0 +1,14 @@
+<div class="container" *ngIf="ready;else loadding">
+  <nav mat-tab-nav-bar class="navigation" mat-align-tabs="center">
+      <a mat-tab-link *ngFor="let link of links"
+         (click)="activeLink = link.path"
+         [active]="activeLink == link.path"
+         [routerLink]="link.path"> {{link.label}} </a>
+  </nav>
+  <div  class="content">
+      <router-outlet></router-outlet>
+  </div>
+</div>
+<ng-template #loadding>
+  <div class="loading">Loading&#8230;</div>
+</ng-template>

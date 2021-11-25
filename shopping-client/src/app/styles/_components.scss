@@ -1,0 +1,86 @@
+@import '~@angular/material/theming';
+@import './color';
+.dialog-title {
+    position: relative;
+    .close-button {
+        position: absolute;
+        right: 0;
+        top: 0;
+    }
+}
+
+.main-card {
+    position: relative;
+    box-sizing: border-box;
+    padding: 24px;
+    margin: 24px;
+    height: calc(100% - 48px);
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    mat-table {
+        overflow: auto;
+    }
+
+    .refinement {
+        display: flex;
+        grid-row: 1;
+        margin-bottom: 24px;
+        flex-wrap: none;
+
+        .form-control{
+            &:not(:first-child) {
+                margin-left: 24px;
+            }
+        }
+    }
+    .action {
+        margin-top: 24px;
+        grid-row: 3;
+    }
+    .data {
+        grid-row: 2;
+    }
+}
+
+.mat-row {
+    cursor: pointer;
+    transition: 0.3s;
+    &:hover {
+        background-color: map-get($map: $hrm-primary, $key: 50);
+    }
+}
+
+.container{
+    height: 100%;
+    width: 100%;
+
+    &.diaglog-content {
+        max-height: 80vh;
+    }
+}
+
+.bottom-action-bar{
+    padding: 24px;
+    &.from-right {
+        text-align: right;
+    }
+    border-top: 1px solid #c2c2c2;
+}
+
+.flex-container {
+    display: flex;
+    flex-direction: column;
+
+    .flex1 {
+        flex: 1;
+        overflow-y: auto;
+    }
+}
+
+.h-100{
+    height: 100%;
+}
+
+button, .btn {
+    min-width: 120px;
+}
