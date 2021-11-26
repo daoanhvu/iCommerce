@@ -32,27 +32,6 @@ public class ProductService {
         this.productRepository = productRepository;
     }
 
-    @PostConstruct
-    public void prepareTestData() {
-        Product product1 = new Product();
-        product1.setId(null);
-        product1.setName("Young Lady Dress");
-        product1.setBrand("Branch 1");
-        product1.setPrice(15.0);
-        product1.setCategory("Fashion");
-        product1.setColour("Red");
-        productRepository.save(product1);
-
-        Product product2 = new Product();
-        product2.setId(null);
-        product2.setName("Baby Dress");
-        product2.setBrand("Branch 1");
-        product2.setPrice(5.0);
-        product2.setCategory("Baby");
-        product2.setColour("Yellow");
-        productRepository.save(product2);
-    }
-
     public ServiceResponse<Product> getProductById(Long id) {
         ServiceResponse<Product> response = new ServiceResponse<>();
         Optional<Product> optProd = productRepository.findById(id);

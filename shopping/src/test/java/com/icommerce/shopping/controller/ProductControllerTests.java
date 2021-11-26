@@ -17,6 +17,9 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.MvcResult;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
@@ -34,14 +37,14 @@ public class ProductControllerTests {
     @Autowired
     private ObjectMapper objectMapper;
 
-    private Long productId;
-
     @Test
     public void contextLoads() {
         assertNotNull(productController);
     }
 
-    public void initData() {
+    public List<Product> initData() {
+        List<Product> products = new ArrayList<>();
+
         Product product1 = new Product();
         product1.setId(null);
         product1.setName("Laptop M");
@@ -50,24 +53,57 @@ public class ProductControllerTests {
         product1.setCategory("Office Supply");
         product1.setColour("Grey");
         Product savedProduct = productRepository.save(product1);
+        products.add(savedProduct);
 
-        productId = savedProduct.getId();
+        Product product2 = new Product();
+        product2.setId(null);
+        product2.setName("Laptop M");
+        product2.setBrand("Branch M");
+        product2.setPrice(1200.0);
+        product2.setCategory("Office Supply");
+        product2.setColour("Grey");
+        savedProduct = productRepository.save(product2);
+        products.add(savedProduct);
+
+        Product product3 = new Product();
+        product3.setId(null);
+        product3.setName("Laptop M");
+        product3.setBrand("Branch M");
+        product3.setPrice(1200.0);
+        product3.setCategory("Office Supply");
+        product3.setColour("Grey");
+        savedProduct = productRepository.save(product3);
+        products.add(savedProduct);
+
+        Product product4 = new Product();
+        product4.setId(null);
+        product4.setName("Laptop M");
+        product4.setBrand("Branch M");
+        product4.setPrice(1200.0);
+        product4.setCategory("Office Supply");
+        product4.setColour("Grey");
+        savedProduct = productRepository.save(product4);
+        products.add(savedProduct);
+
+        Product product5 = new Product();
+        product5.setId(null);
+        product5.setName("Laptop M");
+        product5.setBrand("Branch M");
+        product5.setPrice(1200.0);
+        product5.setCategory("Office Supply");
+        product5.setColour("Grey");
+        savedProduct = productRepository.save(product5);
+        products.add(savedProduct);
+
+        return products;
     }
 
     @Test
     public void testGetById_Found() throws Exception {
-        final String name = "Laptop M";
-        Product product1 = new Product();
-        product1.setId(null);
-        product1.setName("Laptop M");
-        product1.setBrand("Branch M");
-        product1.setPrice(1200.0);
-        product1.setCategory("Office Supply");
-        product1.setColour("Grey");
-        Product savedProduct = productRepository.save(product1);
-        productId = savedProduct.getId();
+        List<Product> products = initData();
+        final String expectedName = products.get(0).getName();
 
-        MvcResult result = mockMvc.perform(MockMvcRequestBuilders.get("/products/" + productId)
+        MvcResult result = mockMvc.perform(MockMvcRequestBuilders.get("/products/" + products.get(0).getId())
                         .accept(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
                 .andReturn();
@@ -78,12 +114,12 @@ public class ProductControllerTests {
         assertNotNull(response);
         assertEquals(Constants.SERVICE_CODE_OK, response.getServiceCode());
         assertNotNull(response.getResult());
-        assertEquals(name, response.getResult().getName());
+        assertEquals(expectedName, response.getResult().getName());
     }
 
     @Test
     public void testGetById_NotFound() throws Exception {
-        productId = 999L;
+        long productId = 1009L;
         MvcResult result = mockMvc.perform(MockMvcRequestBuilders.get("/products/" + productId)
                         .accept(MediaType.APPLICATION_JSON))
                 .andExpect(status().isNotFound())
@@ -98,6 +134,7 @@ public class ProductControllerTests {
 
     @Test
     public void testSearchProduct() throws Exception {
+        initData();
         PageableRequest searchRequest = new PageableRequest();
         searchRequest.setPage(1);
         searchRequest.setSize(10);
@@ -113,5 +150,6 @@ public class ProductControllerTests {
         ServiceResponse<PageableContent<Product>> response = objectMapper.readValue(resultStr,
                 new TypeReference<ServiceResponse<PageableContent<Product>>>(){});
         assertNotNull(response);
+        assertEquals(5, response.getResult().getTotalElements());
     }
 }
