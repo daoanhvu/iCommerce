@@ -106,7 +106,8 @@ Request header:  <br/>
 | field        | value     |
 |--------------|-----------|
 | user-sesion  | some UUID |
-<br/>
+
+
 Request body:  <br/>
 ```
 {
@@ -116,7 +117,8 @@ Request body:  <br/>
 	"quantity": 5
 }
 ```
-<br/>
+
+
 Response <br/>
 ```
 {
@@ -128,7 +130,7 @@ Response <br/>
 			"id": 1
 		},
 		"quantity": 5
-  	}
+	}
 }
 ```
 
