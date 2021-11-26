@@ -131,12 +131,13 @@ Response <br/>
 }
 ```
 ### 4. Get cart
-```GET: /cart```<br/>
+```GET: /cart``` <br/>
+
 | field        | value     |
 |--------------|-----------|
 | user-sesion  | some UUID |
-
-<br/>Response: <br/>
+<br/>
+Response: <br/>
 ```
 {
 	"serviceCode": 0,
