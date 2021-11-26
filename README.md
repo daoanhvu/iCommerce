@@ -73,15 +73,17 @@ Response:
 
 ### 2. Add to card
 ```POST: /cart/add```<br/>
+Request header:  <br/>
+| field        | value     |
+|--------------|-----------|
+| user-sesion  | some UUID |
+
 Request body:
 ```
 {
 	"id": some_product_id
 }
 ```
-| field        | value     |
-|--------------|-----------|
-| user-sesion  | some UUID |
 
 Response:
 ```
