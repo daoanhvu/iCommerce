@@ -130,13 +130,15 @@ Response <br/>
   }
 }
 ```
+
 ### 4. Get cart
 ```GET: /cart``` <br/>
 
 | field        | value     |
 |--------------|-----------|
 | user-sesion  | some UUID |
-<br/>
+
+
 Response: <br/>
 ```
 {
