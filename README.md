@@ -7,6 +7,12 @@ This is a simple shopping application. Because this is just a MVP so we have pro
 
 To shop with this application, users don't need to create an account. A session ID will be generated, the cart information will associate with this session ID.
 
+## Documents
+Your can find design documents in the sub-folder ```*docs*```.
+- iCommerce_shopping.pdf: this is the design document.
+- shopping_design.mdj: This file contains diagrams, you need to install StarUML open it.
+
+Download: StarUML [here](https://staruml.io)
 
 ## Backend
 Backend side has been developed using following tools and framework:
@@ -28,7 +34,9 @@ Web client has been developed using Angular 12.
 After checkout this repository, go to the subfolder *shopping-client* and issue these commands:
 
 ```yarn install```
+
 ```yarn build```
+
 ```yarn start```
 
 ## User guide
@@ -37,9 +45,9 @@ Open your browser and navigate to `http://<front-end-host>:9078`. You will see t
 
 ![Product list](https://github.com/daoanhvu/iCommerce/blob/main/docs/ProductList.png?raw=true "Product list")
 
-At left top corner, you will see your cart information. You can click on button `Add to cart` to add product to your cart.
+At left top corner, you will see your cart information. You can click on button *```Add to cart```* to add product to your cart.
 
-In the cart information pane at left top corner, click on the hyperlink *your cart* to view the cart detail.
+In the cart information pane at left top corner, click on the hyperlink <span style="color:blue">```your cart```</span> to view the cart detail.
 
 ![Cart Items](https://github.com/daoanhvu/iCommerce/blob/main/docs/CartItemList.png?raw=true "Cart Items")
 
