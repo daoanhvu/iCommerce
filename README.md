@@ -17,15 +17,16 @@ Backend side has been developed using following tools and framework:
 
 ### Build the app
 Checkout this repository, go to the subfolder *shopping*
-mvn clean compile package
+```mvn clean compile package```
 
 There is no data in database, I have prepared some test data with profile "h2", issue following command to see this test data:
-	java -Dspring.profiles.active=h2 -jar target/shopping-0.0.1-SNAPSHOT.jar
+
+```java -Dspring.profiles.active=h2 -jar target/shopping-0.0.1-SNAPSHOT.jar```
 
 ## Web client
 Web client has been developed using Angular 12.
 After checkout this repository, go to the subfolder *shopping-client* and issue these commands:
 
-yarn install
-yarn build
-yarn start
+```yarn install```
+```yarn build```
+```yarn start```
