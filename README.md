@@ -6,6 +6,7 @@ Backend side has been developed using following tools and framework:
 1. Java 11
 2. Spring boot 2.5.5
 3. Spring JPA & Hibernate
+4. Maven 3.6.3
 
 ## Web client
 Web client has been developed using Angular 12.

@@ -55,6 +55,16 @@ public class ProductService {
 
     public ServiceResponse<Product> getProductById(Long id) {
         ServiceResponse<Product> response = new ServiceResponse<>();
+        Optional<Product> optProd = productRepository.findById(id);
+        if(optProd.isEmpty()) {
+            response.setServiceCode(Constants.SERVICE_CODE_NOT_FOUND);
+            response.setServiceMessage("Product not found");
+            response.setHttpStatus(HttpStatus.NOT_FOUND.value());
+            return response;
+        }
+        response.setServiceCode(Constants.SERVICE_CODE_OK);
+        response.setHttpStatus(HttpStatus.OK.value());
+        response.setResult(optProd.get());
         return response;
     }
 
@@ -101,6 +111,11 @@ public class ProductService {
                                                   Root<Product> root,
                                                   CriteriaBuilder criteriaBuilder) {
         List<Predicate> predicates = new ArrayList<>();
+
+        if(query == null) {
+            return predicates;
+        }
+
         if(query.containsKey("brand")) {
             String brand = (String)query.get("brand");
             if(StringUtils.isNoneBlank(brand)) {
