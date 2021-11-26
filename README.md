@@ -50,7 +50,8 @@ Request body:
 }
 ```
 Response:
-```{
+```
+{
 	"serviceCode": 0,
 	"serviceMessage": null,
 	"result": {
@@ -59,41 +60,49 @@ Response:
 		"totalElement": 15,
 		"content": []
 	}
-}```
+}
+```
 
 ### 2. Add to card
 ```POST: /cart/add```
 Request body:
-```{
+```
+{
 	"id": some_product_id
-}```
+}
+```
 Response:
-```{
+```
+{
 	"serviceCode": 0,
 	"serviceMessage": null,
 	"result": {
 		"id": 125,
 		"userSessionId": "fadfad768dfhej",
 		"items": [
-
+			{
+				"id": 32,
+				"product": {
+					"id": 1
+				},
+				"quantity": 3
+			}
 		]
 		"totalAmount": 0
 	}
-}```
+}
+```
 
 ## Web client
-Web client has been developed using Angular 12.
+Web client has been developed using Angular 12. <br/>
 After checkout this repository, go to the subfolder *shopping-client* and issue these commands:
 
-```yarn install```
-
-```yarn build```
-
-```yarn start```
+```yarn install```<br/>
+```yarn build```<br/>
+```yarn start```<br/>
 
 ## User guide
-After start backend and front-end application.
-Open your browser and navigate to `http://<front-end-host>:9078`. You will see the product list
+After start backend and front-end application, open your browser and navigate to ```http://<front-end-host>:9078```. You will see the product list
 
 ![Product list](https://github.com/daoanhvu/iCommerce/blob/main/docs/ProductList.png?raw=true "Product list")
 
