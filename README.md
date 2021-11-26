@@ -103,10 +103,10 @@ Response:
 ### 3. Update cart
 ```PUT: /cart/update```
 Request header:  <br/>
-| fiel         | value     |
+| field        | value     |
 |--------------|-----------|
 | user-sesion  | some UUID |
-________________________
+<br/>
 Request body:  <br/>
 ```
 {
@@ -132,10 +132,11 @@ Response <br/>
 ```
 ### 4. Get cart
 ```GET: /cart```<br/>
-| fiel         | value     |
+| field        | value     |
 |--------------|-----------|
 | user-sesion  | some UUID |
-Response: <br/>
+
+<br/>Response: <br/>
 ```
 {
 	"serviceCode": 0,
