@@ -22,11 +22,10 @@ Backend side has been developed using following tools and framework:
 4. Maven 3.6.3
 
 ### Build the app
-Checkout this repository, go to the subfolder *shopping*
+Checkout this repository, go to the subfolder *shopping* <br/>
 ```mvn clean compile package```
 
-There is no data in database, I have prepared some test data with profile "h2", issue following command to see this test data:
-
+There is no data in database, I have prepared some test data with profile "h2", issue following command to see this test data: <br/>
 ```java -Dspring.profiles.active=h2 -jar target/shopping-0.0.1-SNAPSHOT.jar```
 
 ## API Contracts
@@ -58,13 +57,22 @@ Response:
 		"size": 20,
 		"page": 1,
 		"totalElement": 15,
-		"content": []
+		"content": [
+			{
+				"id": 1,
+				"name": "Jacket",
+				"brand": "ABC",
+				"category": "Fashion",
+				"price": 100,
+				"colour": "yellow"
+			}
+		]
 	}
 }
 ```
 
 ### 2. Add to card
-```POST: /cart/add```
+```POST: /cart/add```<br/>
 Request body:
 ```
 {
@@ -87,12 +95,67 @@ Response:
 				},
 				"quantity": 3
 			}
-		]
+		],
 		"totalAmount": 0
 	}
 }
 ```
-
+### 3. Update cart
+```PUT: /cart/update```
+Request header:  <br/>
+| fiel         | value     |
+|--------------|-----------|
+| user-sesion  | some UUID |
+________________________
+Request body:  <br/>
+```
+{
+  "userSessionId": "dfasdfasdfasdf",
+  "cartId": 43,
+  "cartItemId": 12,
+  "quantity": 5
+}
+```
+Response <br/>
+```
+{
+  "serviceCode": 0,
+  "serviceMessage": null,
+  "result": {
+	"id": 12,
+	"product": {
+		"id": 1
+	},
+	"quantity": 5
+  }
+}
+```
+### 4. Get cart
+```GET: /cart```<br/>
+| fiel         | value     |
+|--------------|-----------|
+| user-sesion  | some UUID |
+Response: <br/>
+```
+{
+	"serviceCode": 0,
+	"serviceMessage": null,
+	"result": {
+		"id": 125,
+		"userSessionId": "fadfad768dfhej",
+		"items": [
+			{
+				"id": 32,
+				"product": {
+					"id": 1
+				},
+				"quantity": 3
+			}
+		],
+		"totalAmount": 0
+	}
+}
+```
 ## Web client
 Web client has been developed using Angular 12. <br/>
 After checkout this repository, go to the subfolder *shopping-client* and issue these commands:
