@@ -30,10 +30,11 @@ There is no data in database, I have prepared some test data with profile "h2", 
 ```java -Dspring.profiles.active=h2 -jar target/shopping-0.0.1-SNAPSHOT.jar```
 
 ## API Contracts
-### 1. Search products tl;dr
-```POST: /products/search```
+### 1. Search products <br/>
+```POST: /products/search``` <br>
 Request body:
-```{
+```
+{
 	"page": 1,
 	"size": 20,
 	"query": {
@@ -46,7 +47,8 @@ Request body:
 			"to": 200
 		}
 	}
-}```
+}
+```
 Response:
 ```{
 	"serviceCode": 0,
@@ -73,7 +75,7 @@ Response:
 		"id": 125,
 		"userSessionId": "fadfad768dfhej",
 		"items": [
-			
+
 		]
 		"totalAmount": 0
 	}
