@@ -29,6 +29,56 @@ There is no data in database, I have prepared some test data with profile "h2", 
 
 ```java -Dspring.profiles.active=h2 -jar target/shopping-0.0.1-SNAPSHOT.jar```
 
+## API Contracts
+### 1. Search products tl;dr
+```POST: /products/search```
+Request body:
+```{
+	"page": 1,
+	"size": 20,
+	"query": {
+		"name": "some name",
+		"brand": "",
+		"category": "",
+		"color": "",
+		"price": {
+			"from": 100,
+			"to": 200
+		}
+	}
+}```
+Response:
+```{
+	"serviceCode": 0,
+	"serviceMessage": null,
+	"result": {
+		"size": 20,
+		"page": 1,
+		"totalElement": 15,
+		"content": []
+	}
+}```
+
+### 2. Add to card
+```POST: /cart/add```
+Request body:
+```{
+	"id": some_product_id
+}```
+Response:
+```{
+	"serviceCode": 0,
+	"serviceMessage": null,
+	"result": {
+		"id": 125,
+		"userSessionId": "fadfad768dfhej",
+		"items": [
+			
+		]
+		"totalAmount": 0
+	}
+}```
+
 ## Web client
 Web client has been developed using Angular 12.
 After checkout this repository, go to the subfolder *shopping-client* and issue these commands:
