@@ -79,6 +79,10 @@ Request body:
 	"id": some_product_id
 }
 ```
+| field        | value     |
+|--------------|-----------|
+| user-sesion  | some UUID |
+
 Response:
 ```
 {
