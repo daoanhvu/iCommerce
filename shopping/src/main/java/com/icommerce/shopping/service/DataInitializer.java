@@ -5,11 +5,12 @@ import com.icommerce.shopping.repository.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
 import javax.annotation.PostConstruct;
 
-@Component
-@Profile({"dev"})
+@Service
+@Profile({"h2"})
 public class DataInitializer {
 
     private final ProductRepository productRepository;
@@ -38,5 +39,14 @@ public class DataInitializer {
         product2.setCategory("Baby");
         product2.setColour("Yellow");
         productRepository.save(product2);
+
+        Product product3 = new Product();
+        product3.setId(null);
+        product3.setName("Printer");
+        product3.setBrand("HP");
+        product3.setPrice(785.0);
+        product3.setCategory("Office Supply");
+        product3.setColour("White");
+        productRepository.save(product3);
     }
 }

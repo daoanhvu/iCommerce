@@ -9,6 +9,7 @@ spring:
     password:
   jpa:
     database-platform: org.hibernate.dialect.H2Dialect
+    show-sql: true
     hibernate:
       ddl-auto: create-drop
   h2:
@@ -17,5 +18,3 @@ spring:
       path: /h2
       settings:
         trace: false
-
-logging.file.name: ./@project.artifactId@-@project.version@.log

@@ -7,6 +7,8 @@ import com.icommerce.shopping.dto.ServiceResponse;
 import com.icommerce.shopping.model.Product;
 import com.icommerce.shopping.repository.ProductRepository;
 import org.apache.commons.lang3.StringUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -15,7 +17,6 @@ import org.springframework.data.jpa.domain.Specification;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
-import javax.annotation.PostConstruct;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
@@ -24,6 +25,8 @@ import java.util.stream.Collectors;
 
 @Service
 public class ProductService {
+
+    private final Logger LOG = LoggerFactory.getLogger(ProductService.class);
 
     private final ProductRepository productRepository;
 
@@ -39,6 +42,7 @@ public class ProductService {
             response.setServiceCode(Constants.SERVICE_CODE_NOT_FOUND);
             response.setServiceMessage("Product not found");
             response.setHttpStatus(HttpStatus.NOT_FOUND.value());
+            LOG.debug("Product id {} not found.", id);
             return response;
         }
         response.setServiceCode(Constants.SERVICE_CODE_OK);

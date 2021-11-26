@@ -8,6 +8,8 @@ import com.icommerce.shopping.model.CartItem;
 import com.icommerce.shopping.model.Product;
 import com.icommerce.shopping.repository.CartItemRepository;
 import com.icommerce.shopping.repository.CartRepository;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
@@ -18,6 +20,8 @@ import java.util.Optional;
 
 @Service
 public class ShoppingCartService {
+
+    private final Logger LOG = LoggerFactory.getLogger(ShoppingCartService.class);
 
     private final CartItemRepository cartItemRepository;
     private final CartRepository cartRepository;
@@ -42,6 +46,7 @@ public class ShoppingCartService {
             cart.setItems(Arrays.asList(item));
             Cart savedCard = cartRepository.save(cart);
             resp.setResult(savedCard);
+            LOG.debug("Product {} has been add to cart sessionId = {}", product.getId(), userSessionId);
         } else {
             Cart cart = optCart.get();
             Optional<CartItem> existingOpt = cart.getItems()
@@ -68,6 +73,7 @@ public class ShoppingCartService {
         if(optCart.isEmpty()) {
             resp.setHttpStatus(HttpStatus.NOT_FOUND.value());
             resp.setServiceCode(Constants.SERVICE_CODE_ERROR);
+            LOG.debug("Item {} not found", request.getCartItemId());
             return resp;
         }
         CartItem cartItem = optCart.get();
@@ -85,6 +91,7 @@ public class ShoppingCartService {
         if(optCart.isEmpty()) {
             resp.setHttpStatus(HttpStatus.NOT_FOUND.value());
             resp.setServiceCode(Constants.SERVICE_CODE_ERROR);
+            LOG.debug("Cart for sessionId {} not found", userSessionId);
             return resp;
         }
         resp.setServiceCode(Constants.SERVICE_CODE_OK);
