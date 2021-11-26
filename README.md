@@ -30,3 +30,17 @@ After checkout this repository, go to the subfolder *shopping-client* and issue 
 ```yarn install```
 ```yarn build```
 ```yarn start```
+
+## User guide
+After start backend and front-end application.
+Open your browser and navigate to `http://<front-end-host>:9078`. You will see the product list
+
+![Product list](https://github.com/daoanhvu/iCommerce/blob/main/docs/ProductList.png?raw=true "Product list")
+
+At left top corner, you will see your cart information. You can click on button `Add to cart` to add product to your cart.
+
+In the cart information pane at left top corner, click on the hyperlink *your cart* to view the cart detail.
+
+![Cart Items](https://github.com/daoanhvu/iCommerce/blob/main/docs/CartItemList.png?raw=true "Cart Items")
+
+Now you can click on the button `+` or `-` to increase or decrease the quantity of each item in cart.
