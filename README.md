@@ -110,25 +110,25 @@ Request header:  <br/>
 Request body:  <br/>
 ```
 {
-  "userSessionId": "dfasdfasdfasdf",
-  "cartId": 43,
-  "cartItemId": 12,
-  "quantity": 5
+	"userSessionId": "dfasdfasdfasdf",
+	"cartId": 43,
+	"cartItemId": 12,
+	"quantity": 5
 }
 ```
 <br/>
 Response <br/>
 ```
 {
-  "serviceCode": 0,
-  "serviceMessage": null,
-  "result": {
-	"id": 12,
-	"product": {
-		"id": 1
-	},
-	"quantity": 5
-  }
+	"serviceCode": 0,
+	"serviceMessage": null,
+	"result": {
+		"id": 12,
+		"product": {
+			"id": 1
+		},
+		"quantity": 5
+  	}
 }
 ```
 
