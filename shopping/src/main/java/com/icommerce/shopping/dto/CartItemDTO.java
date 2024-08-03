@@ -1,22 +1,16 @@
-package com.icommerce.shopping.model;
+package com.icommerce.shopping.dto;
 
-import javax.persistence.*;
-
-@Entity
-@Table(name = "cart_item")
-public class CartItem {
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+public class CartItemDTO {
     private Long id;
     private Long productId;
     private int quantity;
 
-    public CartItem() {}
+    public CartItemDTO() {}
 
-    public CartItem(Long id, Long productId, int quantity) {
+    public CartItemDTO(Long id, Long productId, int quty) {
         this.id = id;
         this.productId = productId;
-        this.quantity = quantity;
+        this.quantity = quty;
     }
 
     public Long getId() {
@@ -31,8 +25,8 @@ public class CartItem {
         return productId;
     }
 
-    public void setProductId(Long productId) {
-        this.productId = productId;
+    public void setProductId(Long product) {
+        this.productId = product;
     }
 
     public int getQuantity() {
