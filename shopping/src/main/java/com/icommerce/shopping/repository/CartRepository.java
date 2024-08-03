@@ -10,5 +10,7 @@ import java.util.Optional;
 @Repository
 public interface CartRepository extends JpaRepository<Cart, Long>,
         JpaSpecificationExecutor<Cart> {
-    Optional<Cart> findByUserSessionId(String userSessionId);
+    Optional<Cart> findByUserId(Long userId);
+
+    Optional<Cart> findByUserIdAndPaid(Long userId, boolean paid);
 }

@@ -1,16 +1,6 @@
-package com.icommerce.shopping.model;
+package com.icommerce.shopping.dto;
 
-import javax.persistence.Entity;
-import javax.persistence.Table;
-import javax.persistence.Id;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-
-@Entity
-@Table(name = "products")
-public class Product {
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+public class ProductDTO {
     private Long id;
     private String name;
     private String category;
@@ -18,9 +8,9 @@ public class Product {
     private String brand;
     private String colour;
 
-    public Product() { }
+    public ProductDTO() { }
 
-    public Product(Long id, String name, String category, double price, String brand, String colour) {
+    public ProductDTO(Long id, String name, String category, double price, String brand, String colour) {
         this.id = id;
         this.name = name;
         this.category = category;

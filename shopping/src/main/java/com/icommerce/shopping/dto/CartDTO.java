@@ -1,40 +1,25 @@
-package com.icommerce.shopping.model;
+package com.icommerce.shopping.dto;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
-import javax.persistence.Table;
 import java.time.OffsetDateTime;
 import java.util.List;
 
-@Entity
-@Table(name = "cart")
-public class Cart {
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+public class CartDTO {
     private Long id;
     private Long userId;
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ssZ")
     private OffsetDateTime orderDateTime;
-    // What is the maximum number of items people can put in cart in one session
-    // Is it safe for eager fetching here???
-    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    private List<CartItem> items;
+    private List<CartItemDTO> items;
     private double totalAmount;
     private boolean paid;
 
-    public Cart() { }
+    public CartDTO() { }
 
-    public Cart(Long id, Long userId, OffsetDateTime dateTime, List<CartItem> items, boolean paid) {
+    public CartDTO(Long id, Long userId, OffsetDateTime orderDate, List<CartItemDTO> items, boolean paid) {
         this.id = id;
         this.userId = userId;
-        this.orderDateTime = dateTime;
+        this.orderDateTime = orderDate;
         this.items = items;
         this.paid = paid;
     }
@@ -63,11 +48,11 @@ public class Cart {
         this.orderDateTime = orderDateTime;
     }
 
-    public List<CartItem> getItems() {
+    public List<CartItemDTO> getItems() {
         return items;
     }
 
-    public void setItems(List<CartItem> items) {
+    public void setItems(List<CartItemDTO> items) {
         this.items = items;
     }
 

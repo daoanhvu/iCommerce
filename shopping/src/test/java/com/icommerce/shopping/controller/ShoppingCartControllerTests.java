@@ -3,8 +3,8 @@ package com.icommerce.shopping.controller;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.icommerce.shopping.common.Constants;
+import com.icommerce.shopping.dto.CartDTO;
 import com.icommerce.shopping.dto.ServiceResponse;
-import com.icommerce.shopping.dto.UpdateCartItemRequest;
 import com.icommerce.shopping.model.Cart;
 import com.icommerce.shopping.model.CartItem;
 import com.icommerce.shopping.model.Product;
@@ -20,8 +20,6 @@ import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.MvcResult;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
-
-import java.util.UUID;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
@@ -40,7 +38,7 @@ public class ShoppingCartControllerTests {
 
     private Long productId;
     private Long cartId;
-    private String userSessionId;
+    private Long userSessionId;
     private Long toBeUpdatedCartItemId;
 
     private void initDataForTesting() {
@@ -60,7 +58,7 @@ public class ShoppingCartControllerTests {
     public void testAddToCart() throws Exception {
         initDataForTesting();
 
-        userSessionId = UUID.randomUUID().toString();
+        userSessionId = 1L;
         Product product = new Product();
         product.setId(productId);
 
@@ -89,7 +87,7 @@ public class ShoppingCartControllerTests {
         Product product = new Product();
         product.setId(productId);
 
-        userSessionId = UUID.randomUUID().toString();
+        userSessionId = 2L;
 
         MvcResult addCartResult = mockMvc.perform(MockMvcRequestBuilders.post("/cart/add")
                         .content(objectMapper.writeValueAsString(product))
@@ -104,11 +102,11 @@ public class ShoppingCartControllerTests {
         cartId = response.getResult().getId();
         toBeUpdatedCartItemId = response.getResult().getItems().get(0).getId();
 
-        UpdateCartItemRequest request = new UpdateCartItemRequest();
-        request.setCartId(cartId);
-        request.setQuantity(10);
-        request.setUserSessionId(userSessionId);
-        request.setCartItemId(toBeUpdatedCartItemId);
+        CartDTO request = new CartDTO();
+        request.setId(cartId);
+//        request.setQuantity(10);
+        request.setUserId(userSessionId);
+//        request.setCartItemId(toBeUpdatedCartItemId);
         MvcResult result = mockMvc.perform(MockMvcRequestBuilders.put("/cart/update")
                         .content(objectMapper.writeValueAsString(request))
                         .contentType(MediaType.APPLICATION_JSON)
@@ -130,7 +128,7 @@ public class ShoppingCartControllerTests {
         Product product = new Product();
         product.setId(productId);
 
-        userSessionId = UUID.randomUUID().toString();
+        userSessionId = 3L;
 
         MvcResult addCartResult = mockMvc.perform(MockMvcRequestBuilders.post("/cart/add")
                         .content(objectMapper.writeValueAsString(product))

@@ -3,7 +3,7 @@ package com.icommerce.shopping.controller;
 import com.icommerce.shopping.dto.PageableContent;
 import com.icommerce.shopping.dto.ServiceResponse;
 import com.icommerce.shopping.model.Product;
-import com.icommerce.shopping.service.ProductService;
+import com.icommerce.shopping.service.impl.ProductServiceImpl;
 import com.icommerce.shopping.dto.PageableRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -15,10 +15,10 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/products")
 public class ProductController {
 
-    private final ProductService productService;
+    private final ProductServiceImpl productService;
 
     @Autowired
-    public ProductController(ProductService productService) {
+    public ProductController(ProductServiceImpl productService) {
         this.productService = productService;
     }
 
